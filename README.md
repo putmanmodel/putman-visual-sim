@@ -1,72 +1,70 @@
-PUTMAN Model Pipeline Visual Simulator
+# PUTMAN Visual Simulator
 
-A deterministic, local-only simulator for the PUTMAN pipeline:
+**Live demo:** https://putmanmodel.github.io/putman-visual-sim/
 
-M = (V, E, w, t) + context C -> activation S -> beam reconstruction -> interpretation I -> shift metric Delta
+A deterministic, local-only visual simulator for the PUTMAN Model pipeline — showing how a context signal activates a graph, gets pruned by rigidity, reconstructed via a beam, and produces an interpretation shift metric (Δ) over recursive steps.
 
-The app is a single-page React + TypeScript interface that consumes a framework-agnostic core engine from /core, visualizes the synthetic graph via SVG, and exports reproducible artifacts.
+## Pipeline (high level)
 
-What it demonstrates
-- Seeded synthetic graph generation with configurable node count, edge density, and prior/new overlap.
-- Activation scoring from context and weighted structure.
-- Rigidity pruning (rho) over weak nodes/edges.
-- Beam reconstruction with width k.
-- Recursive updates across depth d.
-- Interpretation summaries (I) and per-step shift metric (Delta) using cosine distance between interpretation centroids.
-- Deterministic runlogs with per-step internals and export support.
-ç
-Project layout
-- /core: Framework-agnostic TypeScript simulation engine.
-- /app: Vite + React + TypeScript UI and Vitest tests.
-- /specs: Preset JSON configs (stable, drift, collapse).
+M + C → S → Beam → I → Δ
 
-Run locally
+Where:
+- M = graph structure (nodes/edges/weights)
+- C = context / cue input
+- S = activation state
+- I = interpretation summary
+- Δ = measured shift across steps
+
+## What you can do in the demo
+- Generate a seeded synthetic graph (reproducible)
+- Tune rigidity (ρ), beam width (k), and depth (d)
+- Watch active/pruned structure update step-by-step
+- See Δ change over time (shift / drift / collapse behavior)
+
+**Exports**
+- SVG of the current view
+- JSON runlog with per-step internals (for replay + analysis)
+
+## Presets
+Use the preset buttons as “stories”:
+- Stable — low drift, moderate pruning
+- Drift — stronger recursive movement and interpretation shift
+- Collapse — aggressive pruning and structural loss
+
+## Repo layout
+- core/ — framework-agnostic TypeScript engine (deterministic)
+- app/ — React + Vite UI (SVG visualization + exports)
+- specs/ — preset parameter configs
+
+## Run locally
+Run from the repo root:
 
 ```
-cd app
-npm install
-npm run dev
+    cd app
+    npm install
+    npm run dev
 ```
 
-Build and tests:
+## Build + test
 
 ```
-npm run build
-npm run test
+    npm run build
+    npm run test
 ```
 
-Reproduce presets
-1. Start the app.
-2. Click one preset button in the left panel:
-- stable: low drift, moderate rigidity.
-- drift: high drift and stronger recursive movement.
-- collapse: high rigidity, aggressive pruning.
-3. Click Run to regenerate with that preset.
-4. Use Export SVG for the current graph view and Export JSON Runlog for full step traces.
+## Determinism
+A determinism test verifies:
+- same seed + params → identical runlog hash
+- different seeds → different runlog hash
 
-Determinism check
+See: app/tests/core.determinism.test.ts
 
-Vitest includes core determinism assertions in:
+## Related work
+- PUTMAN Model papers (Zenodo): https://doi.org/10.5281/zenodo.15634339
+- PUTMAN Model repo: https://github.com/putmanmodel/putman-model-paper
 
-app/tests/core.determinism.test.ts
-
-It verifies:
-- same seed + params => identical runlog and hash
-- different seeds => different runlog hashes
-
-GitHub Pages
-
-GitHub Actions workflow:
-
-.github/workflows/deploy-pages.yml
-
-On pushes to main, it builds /app and deploys static output to GitHub Pages.
-
-License
-
-This project is licensed under Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0).
+## License
+CC BY-NC 4.0 — Creative Commons Attribution–NonCommercial 4.0 International.
 See LICENSE.
 
-Contact
-
-putmanmodel@pm.me
+Contact: putmanmodel@pm.me
