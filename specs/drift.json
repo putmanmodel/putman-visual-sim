@@ -1,0 +1,17 @@
+{
+  "name": "drift",
+  "description": "Higher drift and learning amplify interpretation movement over depth.",
+  "params": {
+    "seed": 314,
+    "nodeCount": 30,
+    "edgeDensity": 0.3,
+    "overlapPercent": 0.22,
+    "recursionDepth": 10,
+    "rigidity": 0.25,
+    "beamWidth": 5,
+    "activationThreshold": 0.5,
+    "contextBlend": 0.5,
+    "weightLearningRate": 0.34,
+    "driftBias": 0.22
+  }
+}

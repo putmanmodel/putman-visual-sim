@@ -1,0 +1,17 @@
+{
+  "name": "stable",
+  "description": "Moderate rigidity with low drift keeps interpretation changes small.",
+  "params": {
+    "seed": 42,
+    "nodeCount": 26,
+    "edgeDensity": 0.24,
+    "overlapPercent": 0.35,
+    "recursionDepth": 8,
+    "rigidity": 0.28,
+    "beamWidth": 4,
+    "activationThreshold": 0.52,
+    "contextBlend": 0.58,
+    "weightLearningRate": 0.22,
+    "driftBias": 0.04
+  }
+}

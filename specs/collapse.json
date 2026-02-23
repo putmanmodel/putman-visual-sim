@@ -1,0 +1,17 @@
+{
+  "name": "collapse",
+  "description": "High rigidity prunes structure quickly and narrows beam diversity.",
+  "params": {
+    "seed": 777,
+    "nodeCount": 28,
+    "edgeDensity": 0.2,
+    "overlapPercent": 0.18,
+    "recursionDepth": 7,
+    "rigidity": 0.55,
+    "beamWidth": 3,
+    "activationThreshold": 0.6,
+    "contextBlend": 0.62,
+    "weightLearningRate": 0.28,
+    "driftBias": 0.05
+  }
+}
