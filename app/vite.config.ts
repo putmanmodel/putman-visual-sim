@@ -2,15 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: "/putman-visual-sim/",
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@core": new URL("../core/src/index.ts", import.meta.url).pathname,
-    },
-  },
-  server: {
-    fs: {
-      allow: [".."],
-    },
-  },
 });
