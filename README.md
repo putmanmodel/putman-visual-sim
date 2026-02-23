@@ -14,7 +14,7 @@ What it demonstrates
 - Recursive updates across depth d.
 - Interpretation summaries (I) and per-step shift metric (Delta) using cosine distance between interpretation centroids.
 - Deterministic runlogs with per-step internals and export support.
-
+ç
 Project layout
 - /core: Framework-agnostic TypeScript simulation engine.
 - /app: Vite + React + TypeScript UI and Vitest tests.
@@ -22,14 +22,18 @@ Project layout
 
 Run locally
 
+```
 cd app
 npm install
 npm run dev
+```
 
 Build and tests:
 
+```
 npm run build
 npm run test
+```
 
 Reproduce presets
 1. Start the app.
